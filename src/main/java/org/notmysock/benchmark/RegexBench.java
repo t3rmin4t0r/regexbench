@@ -78,6 +78,30 @@ public class RegexBench {
     	greedym.reset("MissXXXXX.XXXX YY");
     	greedym.find(0);
     }
+
+    @Benchmark
+    public void testLazyRegexMissCheck() {
+    	lazym.reset("AXXSASASAASASAS");
+    	lazym.matches();
+    }
+    
+    @Benchmark
+    public void testGreedyRegexMissCheck() {
+    	greedym.reset("AXXSASASAASASAS");
+    	greedym.matches();
+    }
+    
+    @Benchmark
+    public void testLazyRegexHitCheck() {
+    	lazym.reset("MissXXXXX.XXXX YY");
+    	lazym.matches();
+    }
+    
+    @Benchmark
+    public void testGreedyRegexHitCheck() {
+    	greedym.reset("MissXXXXX.XXXX YY");
+    	greedym.matches();
+    }
     
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
